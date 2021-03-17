@@ -1,0 +1,10 @@
+{
+        "name": "Fix Cate",
+        "version": "1.0",
+        "description": "Fixes the unbelievably annoying CATe sign in bug",
+        "permissions" : ["webRequest","webRequestBlocking","https://cate.doc.ic.ac.uk/*"],
+        "background": { "scripts" : ["webrequest.js"]},
+
+
+        "manifest_version": 2
+}
