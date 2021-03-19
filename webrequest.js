@@ -1,9 +1,10 @@
 
-let auth = {confirmed: false, count : 0};
+let auth = {confirmed: false, count : 0, password: null, username:null};
 let _submitResolve;
 
-let usernameDetails = {name :"username", url: "https://cate.doc.ic.ac.uk/*"};
-let passwordDetails = {name :"password", url: "https://cate.doc.ic.ac.uk/*"};
+let usernameDetails = {name :"username", url: "https://cate.doc.ic.ac.uk/"};
+let passwordDetails = {name :"password", url: "https://cate.doc.ic.ac.uk/"};
+
 
 function submitCreds(data) {
     _submitResolve(data);
@@ -14,6 +15,14 @@ function requestCredentials() {
         win._submitResolve = _submitResolve;
     });
 }
+
+chrome.runtime.onInstalled.addListener(function(details) {
+    if (details.reason === "install") {
+        let expireIn5Years = Math.round(Date.now() / 1000) + 5 * 365 * 24 * 60 * 60;
+        chrome.cookies.set({...passwordDetails, expirationDate: expireIn5Years, value: "false"});
+    }
+});
+
 
 
 
@@ -30,15 +39,17 @@ chrome.webRequest.onAuthRequired.addListener(
         let passPromise= new Promise((resolve) => {passResolver = resolve});
 
 
+        if(auth.username === null) {
+            chrome.cookies.get(usernameDetails, (cookie) => {userResolver(cookie)});
+            chrome.cookies.get(passwordDetails, (cookie) => {passResolver(cookie)});
+            auth.username = await usernamePromise.then((cookie) => {return cookie ? cookie.value : null});
+            auth.password = await passPromise.then((cookie) => {return cookie ? cookie.value : null});
+            console.log(auth);
+        }
 
-        chrome.cookies.get(usernameDetails, (cookie) => {userResolver(cookie)});
-        chrome.cookies.get(passwordDetails, (cookie) => {passResolver(cookie)});
 
-        let username = await usernamePromise.then((cookie) => {return cookie ? cookie.value : null});
-        let password = await passPromise.then((cookie) => {return cookie ? cookie.value : null});
-        alert(username);
 
-        if(username === null || (!auth.confirmed && auth.count > 2)) {
+        if(auth.password === null || (!auth.confirmed && auth.count > 2)) {
 
             let promise;
             requestCredentials();
@@ -47,8 +58,8 @@ chrome.webRequest.onAuthRequired.addListener(
                 _submitResolve = resolve;
             });
             await promise.then((data) => {
-                password = data.password;
-                username = data.username;
+                auth.password = data.password;
+                auth.username = data.username;
             });
 
 
@@ -61,7 +72,7 @@ chrome.webRequest.onAuthRequired.addListener(
 
 
 
-        callbackFn({'authCredentials': {username: username, password: password}});
+        callbackFn({'authCredentials': {username: auth.username, password: auth.password}});
         //callbackFn({'authCredentials': {username: auth.username, password: auth.password}});
 
 
