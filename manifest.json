@@ -2,8 +2,11 @@
         "name": "Fix Cate",
         "version": "1.0",
         "description": "Fixes the unbelievably annoying CATe sign in bug",
-        "permissions" : ["webRequest","webRequestBlocking","https://cate.doc.ic.ac.uk/*"],
+        "permissions" : ["webRequest","webRequestBlocking","https://cate.doc.ic.ac.uk/*", "cookies"],
         "background": { "scripts" : ["webrequest.js"]},
+        "browser_action": {
+             "default_popup" : "popup.html"
+        },
 
 
         "manifest_version": 2

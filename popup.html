@@ -5,12 +5,12 @@
 </head>
 <body>
 <script src= "popup.js"></script>
-<form id = "creds" action = "https://cate.doc.ic.ac.uk" autocomplete = "on" method="post">
+<form id = "creds" autocomplete = "on" method="post">
     username:
-    <input type="text" id = "username"  autofocus />
+    <input type="text" id = "username" autocomplete = "name" autofocus />
     <br />
     password:
-    <input type="password" id = "password" name = "password" />
+    <input type="text" id = "password" autocomplete = "id" name = "password" />
     <br />
     <button type="submit" value="Submit">Submit</button>
 </form>
