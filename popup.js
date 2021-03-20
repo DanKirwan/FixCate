@@ -20,16 +20,15 @@ function setCredentials() {
     let password = document.getElementById("password").value;
 
     let expireIn5Years = Math.round(Date.now() / 1000) + 5 * 365 * 24 * 60 * 60;
-    let expireIn60Sec = Math.round(Date.now() / 1000) + 20;
 
-    chrome.cookies.set({name: "username", url: "https://cate.doc.ic.ac.uk/", expirationDate: expireIn60Sec, value: username});
+    chrome.cookies.set({name: "username", url: "https://cate.doc.ic.ac.uk/", expirationDate: expireIn5Years, value: username});
     chrome.cookies.get({name: "secure", url: "https://cate.doc.ic.ac.uk/"}, (cookie) => {
         if(cookie && cookie.value === "true") {
 
             chrome.cookies.set({
                 name: "password",
                 url: "https://cate.doc.ic.ac.uk/",
-                expirationDate: expireIn60Sec,
+                expirationDate: expireIn5Years,
                 value: password
             });
         }

@@ -44,12 +44,9 @@ chrome.webRequest.onAuthRequired.addListener(
             chrome.cookies.get(passwordDetails, (cookie) => {passResolver(cookie)});
             auth.username = await usernamePromise.then((cookie) => {return cookie ? cookie.value : null});
             auth.password = await passPromise.then((cookie) => {return cookie ? cookie.value : null});
-            console.log(auth);
         }
 
-
-
-        if(auth.password === null || (!auth.confirmed && auth.count > 2)) {
+        if(auth.password === null || (!auth.confirmed && auth.count > 1)) {
 
             let promise;
             requestCredentials();
@@ -66,17 +63,13 @@ chrome.webRequest.onAuthRequired.addListener(
         }
         auth.count ++;
 
-        if(auth.count > 3) {
+        if(auth.count > 2) {
             auth.count = 0;
         }
 
 
 
         callbackFn({'authCredentials': {username: auth.username, password: auth.password}});
-        //callbackFn({'authCredentials': {username: auth.username, password: auth.password}});
-
-
-
 
     },
     {urls:["https://cate.doc.ic.ac.uk/*"]},
