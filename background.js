@@ -5,14 +5,16 @@ let _submitResolve;
 let usernameDetails = {name :"username", url: "https://cate.doc.ic.ac.uk/"};
 let passwordDetails = {name :"password", url: "https://cate.doc.ic.ac.uk/"};
 
+let popupSize = {x: 292 + 13, y: 300};
 
 function submitCreds(data) {
     _submitResolve(data);
 }
 
 function requestCredentials() {
-    chrome.windows.create({url: "popup.html", type: "popup", focused: true, height:200, width:300}, function(win) {
+    chrome.windows.create({url: "popup.html", type: "popup", focused: true, width: popupSize.x, height: popupSize.y}, function(win) {
         win._submitResolve = _submitResolve;
+
     });
 }
 

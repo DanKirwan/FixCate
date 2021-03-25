@@ -3,11 +3,19 @@
 <head>
 
 </head>
-<body>
-<script src="menu.js"></script>
-<input type="checkbox" id="secure" name="secure" value="true">
-<label for="secure">Save Password?</label>
+<body style="margin: 0">
+    <link href="style.css" rel="stylesheet">
+    <script src="menu.js"></script>
+    <script src="util.js"></script>
+    <div style="overflow:hidden; padding: 8px;">
 
-<button type="button" id="reset">Reset Credentials</button>
+        <div class="horizontal-container">
+            <label for="secure">Save my Password</label>
+            <input type="checkbox" id="secure" name="secure" value="true">
+        </div>
+
+        <button  id="reset">Reset Credentials</button>
+        <div id = "resetMessage">Credentials Reset</div>
+    </div>
 </body>
 </html>

@@ -13,7 +13,11 @@ window.onload = function() {
     checkBox.onclick = setSecurity;
 
 
-    document.getElementById("reset").onclick = resetCreds;
+    let button = document.getElementById("reset");
+    button.addEventListener("click", showResetMessage);
+    button.addEventListener("click", resetCreds);
+    button.addEventListener("click", makeRipple);
+
 };
 
 function setSecurity() {
@@ -44,3 +48,18 @@ function resetCreds() {
         value : ""
     });
 }
+
+function showResetMessage() {
+    let message = document.getElementById("resetMessage");
+
+    message.style.opacity = "1";
+    message.style.visibility = "visible";
+
+    setTimeout(() => {
+        message.style.opacity = "0";
+        message.style.visibility = "hidden";
+    }, 700);
+}
+
+
+

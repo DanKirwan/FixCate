@@ -1,0 +1,194 @@
+:root {
+    --selected-color: #1889ff;
+}
+
+button {
+    /*border: solid black 2px;*/
+    border: none;
+    border-radius: 2px;
+    background-color: ghostwhite;
+    transition: 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+    position:relative;
+    outline: none;
+
+    font-size:  1rem;
+    padding: 0.5rem 1rem;
+
+    text-transform: uppercase;
+
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+
+}
+
+button:hover {
+    box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.5);
+    background-color: #f7f7f7;
+
+}
+
+#submit-button {
+    transform: translate(-50%, 0);
+    margin-top: 20px;
+    left: 136px;
+}
+
+
+#reset {
+    font-size:  1rem;
+    padding: 0 0;
+    overflow: visible;
+}
+
+#reset:hover {
+    background: red;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+
+span.ripple {
+    position: absolute;
+    animation: ripple 1s linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+#reset > span.ripple {
+    animation: washout 1.2s linear;
+    background-color: red;
+}
+
+
+
+#secure {
+    width:30px;
+    height:30px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+}
+
+#secure:hover {
+    transform: scale(1.2);
+}
+
+#login-banner {
+    color: var(--selected-color);
+    font-weight: bolder;
+    border-left: 5px solid var(--selected-color);
+    padding-left: 33px; /*extra 3 to match 8px margin on body*/
+    transform: translate(-8px, 0);
+}
+
+
+.horizontal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#resetMessage {
+    color: white;
+    position: absolute;
+    text-align: center;
+    font-size: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    z-index: 100;
+    transition: 0.4s;
+    opacity:0;
+    visibility: hidden;
+
+}
+
+
+
+label {
+    position: relative;
+    display: block;
+    height: 2rem;
+    margin: 0.5rem;
+    margin-left: 30px;
+}
+
+
+.input-label {
+    position:absolute;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    transition: 0.1s;
+    margin-left: 0.5rem;
+}
+
+input:not(:placeholder-shown) + .input-label, input:focus + .input-label{
+    margin-top: 0.2rem;
+    font-size: 0.7rem;
+}
+
+input:focus + .input-label {
+    color: var(--selected-color);
+}
+
+input[type=text], input[type=password] {
+    position: absolute;
+    display: block;
+
+    border-radius: 3px 3px 0 0;
+    border: none;
+    border-bottom: 0 solid black;
+    outline: none;
+    background-color: rgba(240, 240, 240, 0.7);
+    transition: 0.2s;
+
+    padding: 1rem 0.5rem 0.5rem;
+    margin-bottom: 1px;
+    font-size: 1rem;
+
+    border-bottom: 1px solid black;
+
+    width: 200px;
+}
+
+
+/*Make flexbox and do labels*/
+
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: rgba(200, 200, 200, 0.7);
+    margin-bottom: 0;
+    border-color: var(--selected-color);
+    border-width: 2px;
+
+}
+
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes washout {
+    20% {
+        transform: scale(4);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+

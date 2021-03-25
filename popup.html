@@ -5,14 +5,22 @@
 </head>
 <body>
 <script src= "popup.js"></script>
+<script src="util.js"></script>
+<link href="style.css" rel="stylesheet">
 <form id = "creds" autocomplete = "on" method="post">
-    Username:
-    <input type="text" id = "username" autocomplete = "name" autofocus />
+    <h1 id = "login-banner">LOGIN</h1>
+    <label for="username">
+        <input type="text" id = "username" placeholder=" "/>
+        <span class = "input-label">Username</span>
+    </label>
+
     <br />
-    Password:
-    <input type="password" id = "password" autocomplete = "id" name = "password" />
+    <label for="password">
+        <input type="password" id = "password" name = "password" placeholder=" " />
+        <span class = "input-label">Password</span>
+    </label>
     <br />
-    <button type="submit" value="Submit">Submit</button>
+    <button type="submit" id = "submit-button" value="Submit">Submit</button>
 </form>
 
 
