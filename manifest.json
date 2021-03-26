@@ -1,6 +1,6 @@
 {
         "name": "Fix Cate",
-        "version": "1.0",
+        "version": "0.1",
         "description": "Fixes the unbelievably annoying CATe sign in bug for Imperial College DoC users",
         "permissions" : ["webRequest","webRequestBlocking","https://cate.doc.ic.ac.uk/*", "cookies"],
         "background": { "scripts" : ["background.js"]},
