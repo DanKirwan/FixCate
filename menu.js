@@ -39,6 +39,7 @@ function resetCreds() {
 
     chrome.cookies.set({
         ...passDetails,
+        secure: true,
         expirationDate : 0
     });
 

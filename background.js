@@ -4,8 +4,10 @@ let _submitResolve;
 
 let usernameDetails = {name :"username", url: "https://cate.doc.ic.ac.uk/"};
 let passwordDetails = {name :"password", url: "https://cate.doc.ic.ac.uk/"};
+let secureDetails = {name :"secure", url: "https://cate.doc.ic.ac.uk/"};
 
-let popupSize = {x: 292 + 13, y: 300};
+let popupSize = {x: 292 + 13, y: 300}; //For some reason chrome creates a window 13px smaller than specified
+
 
 function submitCreds(data) {
     _submitResolve(data);
@@ -21,7 +23,7 @@ function requestCredentials() {
 chrome.runtime.onInstalled.addListener(function(details) {
     if (details.reason === "install") {
         let expireIn5Years = Math.round(Date.now() / 1000) + 5 * 365 * 24 * 60 * 60;
-        chrome.cookies.set({...passwordDetails, expirationDate: expireIn5Years, value: "false"});
+        chrome.cookies.set({...secureDetails, expirationDate: expireIn5Years, value: "false"});
     }
 });
 

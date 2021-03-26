@@ -1,10 +1,8 @@
 
 window.onload = function() {
-    let creds = document.getElementById("creds")
+    let creds = document.getElementById("creds");
     creds.focus();
-    creds.onsubmit = (e) => {
-        setCredentials();
-    }
+    creds.onsubmit = setCredentials;
 
     chrome.cookies.get({name: "username", url: "https://cate.doc.ic.ac.uk/"}, (cookie) => {
 
@@ -31,6 +29,7 @@ function setCredentials() {
 
             chrome.cookies.set({
                 name: "password",
+                secure: true,
                 url: "https://cate.doc.ic.ac.uk/",
                 expirationDate: expireIn5Years,
                 value: password
