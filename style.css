@@ -37,8 +37,7 @@ button:hover {
 
 
 #reset {
-    font-size:  1rem;
-    padding: 0 0;
+    margin: 1rem;
     overflow: visible;
 }
 
@@ -53,22 +52,26 @@ button:hover {
 span.ripple {
     position: absolute;
     animation: ripple 1s linear;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--selected-color);
+    opacity: 0.7;
     border-radius: 50%;
 }
 
 #reset > span.ripple {
     animation: washout 1.2s linear;
     background-color: red;
+    opacity: 1;
 }
 
 
 
 #secure {
-    width:30px;
-    height:30px;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
     transition-duration: 0.2s;
+
+    align-self: center;
 
 }
 
@@ -86,17 +89,18 @@ span.ripple {
 
 
 .horizontal-container {
+    margin: 1em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 
-#resetMessage {
+#reset-message {
     color: white;
     position: absolute;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -114,8 +118,7 @@ label {
     position: relative;
     display: block;
     height: 2rem;
-    margin: 0.5rem;
-    margin-left: 30px;
+    margin: 0.5rem 0.5rem 0.5rem 30px;
 }
 
 

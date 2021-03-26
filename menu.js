@@ -50,7 +50,7 @@ function resetCreds() {
 }
 
 function showResetMessage() {
-    let message = document.getElementById("resetMessage");
+    let message = document.getElementById("reset-message");
 
     message.style.opacity = "1";
     message.style.visibility = "visible";
