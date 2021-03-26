@@ -24,3 +24,5 @@ chrome://extensions
 ## **Warning**
 
 If you opt to save your password, **it is not stored securely** and anyone with access to your unlocked PC could get your password.
+
+Password saving can be toggled by navigating to the extensions toolbar and clicking on the *Fix Cate* icon.
